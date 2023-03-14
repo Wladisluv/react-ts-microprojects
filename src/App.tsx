@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import Form from './components/Form'
+import Modal from './components/Modal'
 
-function App() {
+const App = () => {
+
+  const [modal, setModal] = useState(false)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='h-screen bg-slate-500'>
+      <div className='flex justify-center items-center h-screen'>
+      <button className='py-2 px-4 rounded text-xl bg-slate-700 text-white' onClick={() => setModal(true)}>Open⚡️</button>
     </div>
-  );
+      {modal && 
+      <Modal>
+        <Form onCreate={() => setModal(false)}/>
+      </Modal>
+      }
+    </div>
+  )
 }
 
-export default App;
+export default App
